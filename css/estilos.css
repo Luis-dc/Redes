@@ -1,0 +1,38 @@
+.container{
+    width: 99%;
+    height: 700px;
+    background: red;
+    margin-bottom: 10px;
+}
+
+.left{
+    width: 32%;
+    height: 600px;
+    background: blue;
+    margin: 5px;
+    border-top: 25px;
+    float: left;
+}
+
+.center{
+    width: 32%;
+    height: 600px;
+    background: green;
+    margin: 5px;
+    float: left;
+}
+
+.rigth{
+    width: 32%;
+    height: 600px;
+    background: slateblue;
+    margin: 5px;
+    float: left;
+}
+
+.left img{
+    width: 200px;
+    height: 150px;
+    align-items: center;
+}
+
