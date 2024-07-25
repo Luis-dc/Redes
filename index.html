@@ -11,20 +11,77 @@
 
     <div class="container">
         <div class="left">
-            <center><a href="#"><img src="img/Rj45.png" alt=""></a><br></center>
-            <center><a href="#"><img src="img/Capa2 switch.png" alt=""></a><br></center>
-            <center><a href="#"><img src="img/Capa 3 - Router.png" alt=""></a><br></center>
-            <center><a href="#"><img src="img/Capa4 protocolo-tcp.png" alt=""></a><br></center>
-            <center><a href="#"><img src="img/Capa5 Samba2.png" alt=""></a><br></center>
-            <center><a href="#"><img src="img/Capa 6 - Archivo ZIP.png" alt=""></a><br></center>
+            <center><a href="#" id="link1"><img src="img/Rj45.png" alt=""></a><br></center>
+            <center><a href="#" id="link2"><img src="img/Capa2 switch.png" alt=""></a><br></center>
+            <center><a href="#" id="link3"><img src="img/Capa 3 - Router.png" alt=""></a><br></center>
+            <center><a href="#" id="link4"><img src="img/Capa4 protocolo-tcp.png" alt=""></a><br></center>
+            <center><a href="#" id="link5"><img src="img/Capa5 Samba2.png" alt=""></a><br></center>
+            <center><a href="#" id="link6"><img src="img/Capa 6 - Archivo ZIP.png" alt=""></a><br></center>
         </div>
-        <div class="center"></div>
-        <div class="rigth">
-            <center><a href="#"><img src="img/foxcapa7.png" alt=""></a><br></center>
-            
+        <div class="center" id="content"></div>
+        <div class="right">
+            <center><a href="#" id="link7"><img src="img/foxcapa7.png" alt=""></a><br></center>
         </div>
     </div>
 
-    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.left a, .right a');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    links.forEach(link => link.querySelector('img').classList.remove('selected'));
+                    
+                    const img = this.querySelector('img');
+                    img.classList.toggle('selected');
+                    
+                    const href = this.getAttribute('href');
+                    if (href !== '#') {
+                        loadContent(href);
+                    }
+                });
+            });
+            
+            document.getElementById('link1').addEventListener('click', function(e) {
+                e.preventDefault();
+                loadContent('capa1.html');
+            });
+            // document.getElementById('link2').addEventListener('click', function(e) {
+            //     e.preventDefault();
+            //     loadContent('capa2.html');
+            // });
+            // document.getElementById('link3').addEventListener('click', function(e) {
+            //     e.preventDefault();
+            //     loadContent('capa3.html');
+            // });
+            // document.getElementById('link4').addEventListener('click', function(e) {
+            //     e.preventDefault();
+            //     loadContent('capa4.html');
+            // });
+            // document.getElementById('link5').addEventListener('click', function(e) {
+            //     e.preventDefault();
+            //     loadContent('capa5.html');
+            // });
+            // document.getElementById('link6').addEventListener('click', function(e) {
+            //     e.preventDefault();
+            //     loadContent('capa6.html');
+            // });
+            // document.getElementById('link7').addEventListener('click', function(e) {
+            //     e.preventDefault();
+            //     loadContent('capa7.html');
+            // });
+
+            function loadContent(url) {
+                fetch(url)
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById('content').innerHTML = data;
+                    })
+                    .catch(error => console.error('Error loading content:', error));
+            }
+        });
+    </script>
 </body>
 </html>
